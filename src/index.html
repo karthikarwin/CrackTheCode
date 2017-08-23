@@ -40,7 +40,7 @@
 			<input type="hidden" id="random">
 			<input type="hidden" id="chance">
 			<input class="form-control number" type="number" id="userGuess">
-			<input type="button" class="btn btn-primary" value="Enter" onClick="guess()">
+			<input type="button" class="btn btn-primary" value="Enter" id="btn" onclick="javascript:guess();">
 		</div>
 		<div class="row">
 			<h3>Rules</h3>
@@ -68,7 +68,33 @@
 		</div>
 	</div>
 	</div>
-
-<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="./js/jquery-3.2.1.min .js"></script>
+	<script type="text/javascript" src="./js/main.js"></script>
+	<script>
+		function guess() {
+			//alert("ok");
+			let input = document.getElementById("userGuess").value;
+			
+			if( random.value == '' && chance.value == '' ) {
+				setRandom();
+			}
+			if(!validateInput(input)) {
+				return false;
+			}
+			chance.value++;
+			if(checkResult(input)) {
+				setMessage("You Cracked! :) <a href='index.html'>Play Again</a>");
+				showAnswer(true);
+			}
+			else if( chance.value >= 7 ) {
+				setMessage("No Luck This Time :( <a href='index.html'>Play Again</a>");
+				showAnswer(false);
+			}
+			else {
+				setMessage("Nope! Keep Try");
+			}
+		}
+	</script>
+	
 </body>
 </html>

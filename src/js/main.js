@@ -1,30 +1,7 @@
-//JS
-
+console.log("Get to the choppa! Nao! Run before they get you!");
 let random = document.getElementById("random");
 let chance = document.getElementById("chance");
-function guess() {
-	//alert("ok");
-	let input = document.getElementById("userGuess").value;
-	
-	if( random.value == '' && chance.value == '' ) {
-		setRandom();
-	}
-	if(!validateInput(input)) {
-		return false;
-	}
-	chance.value++;
-	if(checkResult(input)) {
-		setMessage("You Cracked! :) <a href='index.html'>Play Again</a>");
-		showAnswer(true);
-	}
-	else if( chance.value >= 7 ) {
-		setMessage("No Luck This Time :( <a href='index.html'>Play Again</a>");
-		showAnswer(false);
-	}
-	else {
-		setMessage("Nope! Keep Try");
-	}
-}
+
 function setRandom() {
 	chance.value = "0";
 	random.value = Math.floor( Math.random() * 10000 );
